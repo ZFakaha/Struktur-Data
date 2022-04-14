@@ -19,8 +19,11 @@ int main(){
 	int i, j;
 	float total = 0;
 	float temp;
+	string tempNama;
 	int metode;
 	int maks;
+	int maksNama;
+	
 	
 	inputBanyakMatkul(&banyakMatkul);
 	
@@ -89,6 +92,11 @@ int main(){
 				temp = IPK[j];
 				IPK[j] = IPK[j+1];
 				IPK[j+1] = temp;
+				
+				//sort nama mengikuti IPK
+				tempNama = namaMhs[j];
+				namaMhs[j] = namaMhs[j+1];
+				namaMhs[j+1] = tempNama;
 			}
 		}
 	}
@@ -96,27 +104,38 @@ int main(){
 	//Selection sort
 	for(i = 0; i < banyakMhs; i++){
 		maks = i;
+		maksNama = i;
 		for(j = i + 1; j < banyakMhs; j++){
-			if(IPK[maks] < IPK[j])
+			if(IPK[maks] < IPK[j]){
 				maks = j;
+				maksNama = j;//sort nama (selection)
+			}
 		}
 		if(IPK[i] != IPK[maks]){
 			temp = IPK[i];
 			IPK[i] = IPK[maks];
 			IPK[maks] = temp;
-		}
+			
+			//sort nama (selection)
+			tempNama = namaMhs[i];
+			namaMhs[i] = namaMhs[maksNama];
+			namaMhs[maksNama] = tempNama;
+		} 
 	}
 	}else if(metode == 3){
 	//Insertion sort
 	int j;
 	for(i = 0; i < banyakMhs; i++){
 		temp = IPK[i];
+		tempNama = namaMhs[i]; //sort nama
 		j = i-1;
 		while(IPK[j] < temp && j >= 0){
 			IPK[j+1] = IPK[j];
+			namaMhs[j+1] = namaMhs[j]; // sort nama
 			j--;
 		}
 		IPK[j+1] = temp;
+		namaMhs[j+1] = tempNama;
 	}
 	} else {
 		cout << "Pilih antara 1, 2 atau 3!" << endl;
@@ -124,11 +143,12 @@ int main(){
 	}
 	
 	cout << endl;
-	cout << "IPK setelah diurutkan" << endl;
-	cout << "========================" << endl;
+	cout << endl;
+	cout << "Ranking" << endl;
+	cout << "===================" << endl;
 	cout << endl;
 	for(i = 0; i < banyakMhs; i++){
-	cout << IPK[i] << endl;	
+	cout << i+1 << ". " << namaMhs[i] << " : " << IPK[i] << endl;	
 	}
 	
 	getch();
