@@ -12,6 +12,11 @@ void inputBanyakMhs(int *mhs){
 	cin >> *mhs;
 }
 
+struct Universitas{
+	string NamaUniv;
+	string Alamat;
+	string NamaRektor;
+};
 
 int main(){
 	int banyakMhs;
@@ -23,6 +28,23 @@ int main(){
 	int metode;
 	int maks;
 	int maksNama;
+	
+	Universitas univ;
+	
+	univ.NamaUniv = "Universitas Amikom Yogyakarta";
+	univ.Alamat = "Jl. Ring Road Utara, Condong Catur, Depok, Sleman";
+	univ.NamaRektor = "Prof. Dr. M. Suyanto, M.M";
+	
+	cout << "--------------------------------------------------------------------------------" << endl;
+	cout << "\t\t\t Program Input Nilai Mahasiswa \t\t\t" << endl;
+	cout << "--------------------------------------------------------------------------------" << endl;
+	cout << endl;
+	cout << "Nama Universitas \t: " << univ.NamaUniv << endl;
+	cout << "Alamat \t\t\t: " << univ.Alamat << endl;
+	cout << "Nama Rektor \t\t: " << univ.NamaRektor << endl;
+	cout << endl;
+	cout << "--------------------------------------------------------------------------------" << endl;
+	cout << endl;
 	
 	
 	inputBanyakMatkul(&banyakMatkul);
